@@ -1,0 +1,9 @@
+Contact_Preferences (join table)
+
+establishes the collection of items representing menu of post production preferences for a Contact
+
+Database attributes:
+  contact_id      integer (use "company_id:integer:index" refer to
+                          http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast)
+  preference_id   integer (use "company_id:integer:index" refer to
+                          http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast)

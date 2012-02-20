@@ -1,0 +1,10 @@
+Model: User
+
+Use for authentication. Notes below may change if I go with another authentication gem.
+Note: Users can NOT sign up - for security, these are HARD CODED into the app by the developer.
+
+Database attributes:
+  username
+  roles
+  password_hash
+  password_salt

@@ -1,0 +1,15 @@
+Model: Photographer
+(freelances and staff)
+
+Database attributes:
+  name
+  phone_office
+  phone_mobile
+  fax
+  email
+  email_2   *new (some have multiple email)
+  street
+  city
+  state
+  zip
+  notes   text

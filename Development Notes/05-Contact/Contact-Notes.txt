@@ -1,0 +1,38 @@
+Model: Contact
+
+has_many :assignments
+belongs_to :company
+
+maybe instead of referencing table contact_type, I can use the new Key-Value Storage
+                    http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast
+just make contact_type column and in Model include "store :properties, accessors: [:colour, :size]"
+
+Gaa. Confusing myself here. More research needed.
+
+Database attributes:
+  first_name
+  last_name
+  job_title
+  ship_street_1
+  ship_street_2
+  ship_floor
+  ship_city
+  ship_state
+  ship_zip
+  bill_street_1
+  bill_street_2
+  bill_floor
+  bill_city
+  bill_state
+  bill_zip              integer (maybe? allows for sort if mailing)* this is a change
+  bill_attention
+  email
+  phone_office
+  phone_mobile
+  fax
+  general_notes           text
+  post_production_notes   text
+  contact_type_id         integer
+  company_id              integer (use "company_id:integer:index" refer to
+                          http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast)
+  mailing_list            boolean* this is new

@@ -1,0 +1,32 @@
+Key-Value Storage (http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast)
+
+ActiveRecord now comes with a new way to define key-value storage in models. For example lets say that in our ProductVariation model we have some attributes such as colour and size and we don’t want separate database columns for each one. We can use the new store method to store these values in a single column.
+
+/app/models/product_variation.rb 
+class ProductVariation < ActiveRecord::Base
+  store :properties, accessors: [:colour, :size]
+end
+The first argument here contains the name of the column that the values will be stored in and the second defines the properties we want to store. We’ll still need to create this database column so we’ll need a database migration as well.
+
+terminal 
+$ rails g migration add_properties_to_product_variations properties:text
+Don’t forget to run rake db:migrate to add the column to the database.
+We’ll demonstrate this in the console. We can create a new ProductVariation and give it colour and size attributes in the same way we would for normal attributes.
+
+terminal 
+Loading development environment (Rails 3.2.0)
+1.9.2-p290 :001 > p = ProductVariation.new(colour: 'blue', size: 3)
+ => #<ProductVariation id: nil, product_id: nil, name: nil, price: nil, created_at: nil, updated_at: nil, properties: {:colour=>"blue", :size=>3}>
+We can access these attributes just as we would any others.
+
+terminal 
+1.9.2-p290 :003 > p.colour
+ => "blue"
+We can access them through the properties hash too.
+
+terminal 
+1.9.2-p290 :004 > p.properties[:colour]
+ => "blue" 
+As these attributes aren’t actual database columns we can’t search by them but this is a convenient way to access a hash of attributes.
+
+_________________________________

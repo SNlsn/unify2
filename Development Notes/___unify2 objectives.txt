@@ -1,0 +1,18 @@
+Objectives for version 2:
+
+- radio buttons labeled "cell" and "office" under Contact Phone
+- radio buttons labeled "ready at" and "arrive at" under start time
+- figure how to preserve indenting in view of Post Production notes
+- check box and DB table addition for "mailing list"
+- figure out how to either print labels (singular or all) or at least export to Word -- Christmas Card, marketing etc.
+- figure out how to select a year when printing the paper version of the log book
+- clicking "previous assignments" very slow - possible to paginate and only grab on demand?
+- add "appointment" item to check boxes under type of assignment, and tie that to the calendar view
+- get "unconfirmed" to show up differently in calendar view
+- search by log number
+  (study creating index in database for attributes that will be searched: description and log # for now)
+- 
+
+Stuff to keep in mind
+
+  - be sure to add Attributes Accessible to all models

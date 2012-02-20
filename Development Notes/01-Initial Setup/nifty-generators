@@ -1,0 +1,24 @@
+Nifty generators
+
+I actually wound up NOT going with nifty generators, because they don't seem to have been updated to work with 3.2.1 and the asset pipeline yet, but I did the basic style sheet as a starting point. Note it has to be moved to the ass>assets directory, out of the public>stylsheets directory.  Note also that an update needs to be made to the application.html.erb file:
+<%= javascript_include_tag :default %>
+should now be:
+<%= javascript_include_tag "application" %>
+
+If I *were* to have used them, I would have inserted them in the Gemfile like so:
+
+Add to Gemfile, under the development group
+	gem "nifty-generators"
+
+Allows you to use Ryans' work. For example:
+	rails g nifty:scaffold Recipe name:string index new
+
+
+included generators
+nifty:layout: generates generic layout, stylesheet, and helper files.
+nifty:scaffold: generates a controller and optional model/migration.
+nifty:config: generates a config YAML file and loader.
+nifty:authentication: generates user model with sign up and log in.
+
+To view the README for each generator, run it with the help option:
+	rails g nifty:layout --help

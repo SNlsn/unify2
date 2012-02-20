@@ -1,0 +1,7 @@
+Model: Company
+
+Model really only needs one attribute: Name
+ (other attributes created automatically: ID, created at, modified at)
+
+has_many :contacts
+validate unique

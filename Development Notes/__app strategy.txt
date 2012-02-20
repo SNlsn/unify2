@@ -1,0 +1,16 @@
+App Strategy:
+  Models: (be sure to add Attribute Accessible)
+    Company
+    Contact
+    Photographer
+    LogNumber
+    Assignment
+    Users
+  
+  refinements:
+    calendar (view & controller but no model)
+    pagination
+    "rollodex" - cache fragment
+    autocomplete company name in new contact
+      also, validate unique
+      also, deal with ampersand in company name

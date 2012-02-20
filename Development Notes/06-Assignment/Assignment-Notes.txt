@@ -1,0 +1,59 @@
+Model:Assignment
+
+belongs_to :contact
+index: assignment_description
+
+Database Attributes:
+  first_name
+  last_name
+  email
+  phone_office
+  phone_mobile
+  fax
+  ship_street_1
+  ship_street_2
+  ship_floor
+  ship_city
+  ship_state
+  ship_zip
+  bill_street_1
+  bill_street_2
+  bill_floor
+  bill_city
+  bill_state
+  bill_zip
+  bill_attention
+  general_notes               text
+  post_production_notes       text
+  log_number
+  starts_at                   datetime
+  start_disambiguate          *new; collection of 2 values: arrive, ready
+  ends_at                     datetime
+  duration_hours              integer
+  duration_minutes            integer
+  po_number
+  assignment_contact_name
+  assignment_contact_phone    *change (had been assignment_contact_cell);
+                              now collection of 2 values: cell, office
+  assignment_location         text
+  assignment_description      text (index for search?)
+  delivery_notes              text
+  contact_id                  integer (use "contact_id:integer:index" refer to
+                          http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast)
+  photographer_id             integer (use "photographer_id:integer:index" refer to
+                          http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast)
+  assignment_type             *changed (had been confirmed (boolean);
+                              now collection of 3 values: tentative, confirmed, staff)
+  quote_exists                boolean
+  incomplete                  boolean ? what's this?
+  mileage
+  parking
+  tolls
+  overtime
+  company_id
+  travel_time                 decimal
+  shoot_time                  decimal
+  post_time                   decimal
+  portraits_total             integer
+  images_total                integer
+  prints

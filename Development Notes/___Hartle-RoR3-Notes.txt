@@ -1,0 +1,166 @@
+Hartle RoR3 tutorial notes
+
+Install Git
+
+Install Ruby (requires XCode or GCC build tools)
+  Install RVM: http://rvm.beginrescueend.com/rvm/install/
+  Install Ruby (note - substitute your choice of version, line two)
+    $ rvm get head && rvm reload
+    $ rvm install 1.9.3
+    <wait a while>
+
+Create an RVM gemset for your environment (first part is version of Ruby, second part is an identifier):
+  $ rvm use 1.9.3@rails3tutorial2ndEd --create --default
+  or
+  $ rvm ruby-1.9.3-p125@rails32 --create --default
+  or (in the case of Unify2)
+  $ rvm ruby-1.9.3-p125@unify2 --create --default
+
+Install RubyGems if it doesn't already exist
+If it does, update to the current version (modify following to current RubyGem version):
+  $ gem update --system 1.8.17
+  
+To suppress default behavior of installing boatloads of documentation (which you will probably refer to online anyway or instead), create a Gem config file:
+  $ mate ~/.gemrc
+In this file, add this instruction:
+  gem: --no-ri --no-rdoc
+
+Install Rails (substitute current version):
+  $ gem install rails -v 3.2.1
+
+Create a new directory (optional, just for tidiness), CD to that directory, and create a new Rails application:
+  $ mkdir rails_projects
+  $ cd rails_projects
+  $ rails new first_app
+
+Use Bundler to install and include the gems needed by the app:
+  $ cd first_app/
+  $ mate Gemfile
+
+Hartle prefers to explicity state version numbers (understandable, since he wants his toturial to work for a long time). I consider this option for my project but, for the record, this is Hartle's Gemfile example. Do note his use of "groups" for development and assets.
+Note also his use of ">=" (always performs upgrades) and "~>" (only performs upgrades to minor point releases).
+
+  source 'https://rubygems.org'
+  gem 'rails', '3.2.1'
+  
+  group :development do
+    gem 'sqlite3', '1.3.5'
+  end
+
+  # Gems used only for assets and not required
+  # in production environments by default.
+  group :assets do
+    gem 'sass-rails',   '3.2.3'
+    gem 'coffee-rails', '3.2.2'
+
+    gem 'uglifier', '1.2.3'
+  end
+
+  gem 'jquery-rails', '2.0.0'
+
+Install gems:
+  $ bundle install
+  (shortchut that does the same thing is just plain "bundle")
+
+Configure Git (if you haven't already):
+  $ git config --global user.name "Your Name"
+  $ git config --global user.email your.email@example.com
+  $ git config --global core.editor "mate -w"
+
+Initialize your Git repository for this project.
+First, navigate to root of project. Then:
+  $ git init
+
+Modify the .gitignore file created by Rails. Note: this is a starting point. Feel free to instruct Git to ignore more if you want:
+  # Ignore bundler config
+  /.bundle
+
+  # Ignore the default SQLite database.
+  /db/*.sqlite3
+
+  # Ignore all logfiles and tempfiles.
+  /log/*.log
+  /tmp
+
+  # Ignore other unneeded files.
+  doc/
+  *.swp
+  *~
+  .project
+  .DS_Store
+
+Add everything up to this point for the initial commit:
+  $ git add .
+
+Initial commit (including message):
+  $ git commit -m "Initial commit"
+
+GitHub
+  Create account if you haven't already
+  Create a new project in the Git web interface to your account by clicking "create a repository" (using "first_app" in this example)
+  After submitting the form, push your app (even at this early stage):
+    $ git remote add origin git@github.com:<username>/first_app.git
+    $ git push origin master
+
+CREATE A BRANCH BEFORE YOU SCREW WITH ANYTHING! (The name of the branch in the example below, "modify-README" is an example of a good practice: name you branch in such a way as to be descriptive of what you are working on in this branch):
+  $ git checkout -b modify-README
+
+If you want to rename a file, use
+  git mv oldname.txt newname.md
+so that Git will recognize this as a modified file, not a new file
+Make edits. Commit the edits. You could use "git add .", but Git provides the -a flag as a shortcut for the (very common) case of committing all *modifications to existing files* (or files created using git mv, which don’t count as new files to Git - see previous note):
+  $ git commit -a -m "Improve the README file"
+Be careful about using the -a flag improperly; if you have added any *new files* to the project since the last commit, you still have to tell Git about them using "git add" first.
+
+Merge branch with master:
+  $ git checkout master
+  $ git merge modify-README
+
+Delete branch (optional - you might instead opt to keep them around for reference):
+  $ git branch -d modify-README
+
+Push to GitHub:
+  $ git push
+If that throws an error, try:
+  git push origin master
+
+Heroku stuff follows, but I don't intend to publish Unify2 to Heroku, so I'm omitting those instructions.
+
+========================
+Chapter 2
+========================
+
+Generate using Scaffold (demo app is a microblogging app with Users and Microposts)
+
+$ rails generate scaffold User name:string email:string
+(note model is singular, capitalized)
+create migration
+$ bundle exec rake db:migrate
+
+Foreign key for a "belongs_to" association is lowercase singular
+$ rails generate scaffold Micropost content:string user_id:integer
+User has_many :microposts
+Micropost belongs_to :user
+
+========================
+Chapter 3
+========================
+
+create app, suppressing the test modules
+$ rails new sample_app -T
+(-T flag suppresses automatically creating test modules)
+edit gemfile
+run bundle command
+install RSpec:
+rails generate rspec:install
+initialize Git repository and make first commit:
+git init
+git add .
+git commit -m "First commit."
+
+Create Github repository and push:
+git remote add origin git@github.com:<username>/sample_app.git
+git push origin master
+
+generate a controller for serving static pages:
+rails generate controller StaticPages home help --no-test-framework

@@ -1,0 +1,6 @@
+Preferences (collection)
+
+lists our menu of common Post Production options
+
+Database attributes:
+  name

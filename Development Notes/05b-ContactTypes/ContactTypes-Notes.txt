@@ -1,0 +1,4 @@
+Contact Types (collection)
+
+Database Attributes:
+  name

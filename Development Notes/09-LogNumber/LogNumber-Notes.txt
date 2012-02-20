@@ -1,0 +1,8 @@
+Model: LogNumber
+(alternatively, "JobLog" (or "joblog") from Unify1)
+This stores the current log number. That's all it does.
+Current number gets incremented by Assignment Controller, and this table is updated.
+
+Database attributes:
+  prefix      integer
+  lognumber   integer

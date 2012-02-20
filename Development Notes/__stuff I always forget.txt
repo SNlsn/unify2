@@ -1,0 +1,41 @@
+Stuff I always forget
+
+* ALWAYS CREATE A NEW BRANCH when beginning a new section
+* be sure to add Attributes Accessible to all models
+* add index to searchable Model attributes
+* prefix rake commands with "bundle exec"
+  for example:
+    bundle exec rake db:migrate
+    bundle exec rails server
+    bundle exec rspec spec/requests/static_pages_spec.rb
+    bundle exec irb (require gem, incl. version, declared in Gemfile)
+
+Git:
+    add new and changed files:
+  git add .
+    add only changed existing files:
+  git add -a
+  git status
+  git commit -m "notes regarding commit"
+    discard all changes and revert to the state things were in at the last commit using checkout
+  git checkout -f
+    create and switch to a new branch
+  git checkout -b new-branch-name
+    list all branches & indicate active one
+  git branch
+    remove a file within Git scope
+  git rm public/removed-file.html
+    merge a branch into Master
+  git checkout master
+  git merge new-branch-name
+    destroy a totally botched branch
+  git checkout master
+  git branch -D botched-branch
+    push to GitHub
+  git push
+    or, if that doesn't work
+  git push origin master
+
+Console
+  bundle exec rails console
+  quit console session by typing "exit" (or shortcut: control-d)
