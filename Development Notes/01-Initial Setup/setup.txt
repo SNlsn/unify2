@@ -91,7 +91,6 @@ rails generate controller home index --no-test-framework
 Put placeholder text in home index view:
 
 <% provide(:title, 'Unify2: Home') %>
-<h1>Unify2</h1>
 <p>
   This is the home page for version 2 of the Unify application.
 </p>
@@ -100,6 +99,10 @@ Remove default home page:
 git rm public/index.html
 modify routes:
  root :to => "home#index"
+
+Replace initial app layout (Hartle) and stylesheet (Bates, nifty layout) as outlined in "initial layout and css" document.
+
+Start the server and see what happens.
 
 If everything is okay, merge branch:
 git checkout master
