@@ -107,3 +107,4 @@ Start the server and see what happens.
 If everything is okay, merge branch:
 git checkout master
 git merge custom-homepage
+git push

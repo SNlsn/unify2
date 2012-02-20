@@ -21,4 +21,14 @@ initial application layout (views>layouts>application.html.erb:
 
 initial stylesheet (app>assets>stylesheets>application.css):
 copy from nifty generator
-remove the "tree" include I think
+
+REFINEMENTS
+change extension in stylesheets to .css.scss
+remove tree . in application.css.scss
+add
+@import "layout.css.scss";
+@import "home.css.scss";
+
+This will not only allow Sass variables and mixins to work, it also permits defining CSS *load order*
+
+review tip at end or railscast for how to *scope* css (might be of value when I get to Calendar time): http://railscasts.com/episodes/268-sass-basics
