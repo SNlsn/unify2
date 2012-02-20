@@ -24,11 +24,15 @@ copy from nifty generator
 
 REFINEMENTS
 change extension in stylesheets to .css.scss
-remove tree . in application.css.scss
+remove "//= require tree ." in application.css.scss
 add
 @import "layout.css.scss";
 @import "home.css.scss";
 
 This will not only allow Sass variables and mixins to work, it also permits defining CSS *load order*
 
-review tip at end or railscast for how to *scope* css (might be of value when I get to Calendar time): http://railscasts.com/episodes/268-sass-basics
+review tip at end of railscast for how to *scope* css (might be of value when I get to Calendar time): http://railscasts.com/episodes/268-sass-basics
+
+Javascript
+include jQueryUI by adding this to the application.js manifest:
+//= require jquery-ui

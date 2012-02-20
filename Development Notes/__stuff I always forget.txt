@@ -11,27 +11,32 @@ Stuff I always forget
     bundle exec irb (require gem, incl. version, declared in Gemfile)
 
 Git:
-    add new and changed files:
+    * add new and changed files:
   git add .
-    add only changed existing files:
+    * add only changed existing files:
   git add -a
   git status
   git commit -m "notes regarding commit"
-    discard all changes and revert to the state things were in at the last commit using checkout
+    * discard all changes and revert to the state things were in at the last commit using checkout:
   git checkout -f
-    create and switch to a new branch
+    * create and switch to a new branch:
   git checkout -b new-branch-name
-    list all branches & indicate active one
+    * list all branches & indicate active one:
   git branch
-    remove a file within Git scope
+    * remove a file within Git scope:
   git rm public/removed-file.html
-    merge a branch into Master
+    * merge a branch into Master:
   git checkout master
   git merge new-branch-name
-    destroy a totally botched branch
+    * destroy a totally botched branch:
   git checkout master
   git branch -D botched-branch
-    push to GitHub
+    * delete a no longer useful branch after merging:
+  git branch -d unnecessary-branch-name
+    * Create new repository on GitHub (via their web page, which gives name) and push it up:
+  git remote add origin git@github.com:SNlsn/unify2.git
+  git push origin master
+    * push changes to GitHub:
   git push
     or, if that doesn't work
   git push origin master
